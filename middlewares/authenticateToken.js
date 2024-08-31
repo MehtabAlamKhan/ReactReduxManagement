@@ -5,8 +5,6 @@ const authenticateToken = async (req, res, next) => {
     return res.status(400).json({ msg: "Unauthorized" });
   }
 
-  console.log("Feature");
-
   jwt.verify(req.headers.token, process.env.JWT_TOKEN, (err, user) => {
     if (err) return res.status(400).json({ msg: "Unauthorized" });
     req.body.username = user.username;
