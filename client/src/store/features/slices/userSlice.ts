@@ -24,8 +24,23 @@ const userSlice = createSlice({
     loadUser: (state, action) => {
       return action.payload;
     },
+    loginUser: (state, action) => {
+      return {
+        ...state,
+        token: action.payload.token,
+        user: {
+          username: action.payload.user.username,
+          password: action.payload.user.password,
+          id: action.payload.user._id,
+          email: action.payload.user.email,
+        },
+      };
+    },
+    clearUserState: () => {
+      return initialState;
+    },
   },
 });
 
-export const { loadUser } = userSlice.actions;
+export const { loadUser, loginUser, clearUserState } = userSlice.actions;
 export default userSlice.reducer;

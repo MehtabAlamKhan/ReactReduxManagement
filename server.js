@@ -8,7 +8,7 @@ const authenticateToken = require("./routes/user.js");
 const app = express();
 const PORT = process.env.PORT || 9000;
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "http://localhost:3000" }));
 
 mongoose
   .connect(process.env.MongoDbURI, { dbName: "Redux" })

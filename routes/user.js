@@ -37,7 +37,7 @@ router.post("/api/users/register", async (req, res) => {
 });
 
 //AUTHENTICATE TOKEN
-router.get(
+router.post(
   "/api/users/authenticateToken",
   authenticateToken,
   async (req, res) => {
@@ -52,7 +52,7 @@ router.get(
 );
 
 //LOGIN
-router.get("/api/users/login", async (req, res) => {
+router.post("/api/users/login", async (req, res) => {
   if (!req.body.username || !req.body.password) {
     return res.status(400).json({ msg: "Unauthorized" });
   }
