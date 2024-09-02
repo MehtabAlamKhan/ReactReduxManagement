@@ -1,11 +1,13 @@
-import React, { useState } from "react";
 import "./style.css";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { useLoginMutation } from "../../store/features/api/usersApi";
 import {
   clearUserState,
   loginUser,
 } from "../../store/features/slices/userSlice";
-import { useDispatch } from "react-redux";
 import { logError } from "../../store/features/slices/errorSlice";
 
 type userState = {
@@ -33,7 +35,7 @@ function Login() {
     await fetchLogin(form)
       .unwrap()
       .then((res) => {
-        console.log(res);
+        localStorage.setItem("jwt", res.token);
         const responseUser = {
           token: res.token,
           user: {
@@ -75,9 +77,11 @@ function Login() {
       </div>
       <div className="remember-me-cont">Remember Me</div>
       <div className="button-cont">
-        <button onClick={submitHandler} className="login-button">
-          LOGIN
-        </button>
+        <Link to="/">
+          <button onClick={submitHandler} className="login-button">
+            LOGIN
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ function App() {
         width: "100%",
         position: "absolute",
         alignContent: "center",
+        alignItems: "center",
       }}
       className="App"
     >
