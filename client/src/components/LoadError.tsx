@@ -8,7 +8,9 @@ import { useAuthenticateTokenQuery } from "../store/features/api/usersApi";
 function LoadError() {
   const dispatch = useDispatch();
   const token = useSelector((state: RootState) => state.user.token);
-  const { data, isError, error } = useAuthenticateTokenQuery();
+  const { data, isError, error } = useAuthenticateTokenQuery(token, {
+    skip: token ? false : true,
+  });
 
   useEffect(() => {
     if (!data) return;

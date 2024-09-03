@@ -19,15 +19,17 @@ export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://127.0.0.1:8000/api/users" }),
   endpoints: (builder) => ({
-    authenticateToken: builder.query<userReturnType, void>({
-      query: () => ({
-        url: "/authenticateToken",
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          token: `${localStorage.getItem("jwt")}`,
-        },
-      }),
+    authenticateToken: builder.query<userReturnType, any>({
+      query: (token) => {
+        return {
+          url: "/authenticateToken",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            token: token,
+          },
+        };
+      },
     }),
     login: builder.mutation<any, any>({
       query(user) {
@@ -39,7 +41,21 @@ export const userApi = createApi({
         };
       },
     }),
+    register: builder.mutation({
+      query: (body) => {
+        return {
+          url: "/register",
+          body,
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        };
+      },
+    }),
   }),
 });
 
-export const { useAuthenticateTokenQuery, useLoginMutation } = userApi;
+export const {
+  useAuthenticateTokenQuery,
+  useLoginMutation,
+  useRegisterMutation,
+} = userApi;

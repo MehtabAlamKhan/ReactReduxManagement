@@ -1,38 +1,42 @@
-import "./style.css";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import "../Login/style.css";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
-import { useLoginMutation } from "../../store/features/api/usersApi";
+import { useRegisterMutation } from "../../store/features/api/usersApi";
+import { useDispatch } from "react-redux";
 import {
-  clearUserState,
   loginUser,
+  clearUserState,
 } from "../../store/features/slices/userSlice";
 import { logError } from "../../store/features/slices/errorSlice";
 
-type userState = {
+type userRegisterState = {
   username: string;
   password: string;
+  email: string;
 };
 
-function Login() {
+function Register() {
   const dispatch = useDispatch();
-  const [form, setForm] = useState<userState>({
+  const [form, setForm] = useState<userRegisterState>({
     username: "",
     password: "",
+    email: "",
   });
-  const [fetchLogin] = useLoginMutation();
 
-  const formHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setForm((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
+  const [fetchRegister] = useRegisterMutation();
+
+  const formHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
   };
 
   const submitHandler = async () => {
-    if (!form.password && !form.username) return;
-    await fetchLogin(form)
+    if (!form.email || !form.password || !form.username) return;
+    await fetchRegister(form)
       .unwrap()
       .then((res) => {
         localStorage.setItem("jwt", res.token);
@@ -49,14 +53,14 @@ function Login() {
         dispatch(loginUser(responseUser));
       })
       .catch((err) => {
+        console.log(err);
         dispatch(clearUserState());
         dispatch(logError({ message: err.data.message, status: err.status }));
       });
   };
-
   return (
     <div className="login-container">
-      <div className="login-text-cont">LOGIN</div>
+      <div className="login-text-cont">REGISTER</div>
       <div className="username-cont">
         <label>Username</label>
         <input
@@ -64,6 +68,15 @@ function Login() {
           name="username"
           className="username-input"
           type="text"
+        ></input>
+      </div>
+      <div className="username-cont">
+        <label>Email</label>
+        <input
+          name="email"
+          className="username-input"
+          type="email"
+          onChange={formHandler}
         ></input>
       </div>
       <div className="pass-cont">
@@ -79,7 +92,7 @@ function Login() {
       <div className="button-cont">
         <Link to="/">
           <button onClick={submitHandler} className="login-button">
-            LOGIN
+            REGISTER
           </button>
         </Link>
       </div>
@@ -87,4 +100,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

@@ -15,7 +15,7 @@ const errorSlice = createSlice({
   initialState,
   reducers: {
     logError: (state, action) => {
-      state.message = action.payload.msg;
+      state.message = action.payload.message;
       state.status = action.payload.status;
     },
     clearError: () => {
