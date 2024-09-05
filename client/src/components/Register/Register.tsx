@@ -8,16 +8,11 @@ import {
   clearUserState,
 } from "../../store/features/slices/userSlice";
 import { logError } from "../../store/features/slices/errorSlice";
-
-type userRegisterState = {
-  username: string;
-  password: string;
-  email: string;
-};
+import { userRegisterType } from "../../Types/Types";
 
 function Register() {
   const dispatch = useDispatch();
-  const [form, setForm] = useState<userRegisterState>({
+  const [form, setForm] = useState<userRegisterType>({
     username: "",
     password: "",
     email: "",

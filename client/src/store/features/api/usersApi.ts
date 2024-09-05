@@ -1,19 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-type errorReturnType = {
-  msg: string;
-  status: number;
-};
-
-type userReturnType = {
-  token: string;
-  user: {
-    username: string;
-    email: string;
-    password: string;
-    _id: string;
-  };
-};
+import { userReturnType, userRegisterType } from "../../../Types/Types";
 
 export const userApi = createApi({
   reducerPath: "userApi",
@@ -31,7 +17,7 @@ export const userApi = createApi({
         };
       },
     }),
-    login: builder.mutation<any, any>({
+    login: builder.mutation<userReturnType, any>({
       query(user) {
         return {
           url: "/login",
@@ -41,7 +27,7 @@ export const userApi = createApi({
         };
       },
     }),
-    register: builder.mutation({
+    register: builder.mutation<userReturnType, userRegisterType>({
       query: (body) => {
         return {
           url: "/register",
