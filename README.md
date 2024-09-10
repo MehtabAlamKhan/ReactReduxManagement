@@ -31,3 +31,9 @@
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=Vite&logoColor=white)
 ![Vitest](https://img.shields.io/badge/vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 ![Zod](https://img.shields.io/badge/-Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white)
+
+
+
+Your folder structure will look like this -
+
+![FolderStructure](https://github.com/user-attachments/assets/9d662c28-cd43-4aef-9f4c-4adde95235c3 | width=300)
