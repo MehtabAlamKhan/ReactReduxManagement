@@ -36,4 +36,4 @@
 
 Your folder structure will look like this -
 
-![FolderStructure](https://github.com/user-attachments/assets/9d662c28-cd43-4aef-9f4c-4adde95235c3|width=300)
+![FolderStructure](https://github.com/user-attachments/assets/09596697-f330-4284-b94f-c8c946449653)
