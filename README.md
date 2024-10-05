@@ -1,3 +1,5 @@
+DONT READ IT
+
 <img src="https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.svg" width="30" height="30" />
 
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
@@ -33,7 +35,3 @@
 ![Zod](https://img.shields.io/badge/-Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white)
 
 
-
-Your folder structure will look like this -
-
-![FolderStructure](https://github.com/user-attachments/assets/09596697-f330-4284-b94f-c8c946449653)
